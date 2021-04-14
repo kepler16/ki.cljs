@@ -1,0 +1,22 @@
+{:paths ["src"]
+ :deps
+ {cljs-bean/cljs-bean {:mvn/version "1.6.0"}
+  uix/core {:git/url "https://github.com/roman01la/uix.git"
+            :deps/root "core"
+            :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}
+  uix/dom {:git/url "https://github.com/roman01la/uix.git"
+           :deps/root "dom"
+           :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}}
+
+ :aliases
+ {:publish! {:jvm-opts ["--illegal-access=deny"]
+             :extra-deps {kepler16/deploy {:mvn/version "0.1.0"}}
+             :exec-fn kepler16.deploy/build-and-deploy!
+             :exec-args {:jar "target/lib.jar"
+                         :target :clojars
+                         :jar-type :thin
+                         :sync-pom true
+                         :verbose true
+                         :group-id kepler16
+                         :artifact-id ki
+                         :version "0.0.1"}}}}
