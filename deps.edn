@@ -1,12 +1,6 @@
-{:paths ["src"]
+{:paths ["src" "uix/core/src" "uix/dom/src"]
  :deps
- {cljs-bean/cljs-bean {:mvn/version "1.6.0"}
-  uix/core {:git/url "https://github.com/roman01la/uix.git"
-            :deps/root "core"
-            :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}
-  uix/dom {:git/url "https://github.com/roman01la/uix.git"
-           :deps/root "dom"
-           :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}}
+ {cljs-bean/cljs-bean {:mvn/version "1.6.0"}}
 
  :aliases
  {:publish! {:jvm-opts ["--illegal-access=deny"]

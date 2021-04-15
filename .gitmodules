@@ -1,0 +1,3 @@
+[submodule "uix"]
+	path = uix
+	url = https://github.com/roman01la/uix
