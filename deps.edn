@@ -1,4 +1,4 @@
-{:paths ["src"]
+{:paths ["src" "resources"]
  :deps
  {cljs-bean/cljs-bean {:mvn/version "1.6.0"}
   ;; UIX Deps
@@ -23,4 +23,4 @@
                          :verbose true
                          :group-id kepler16
                          :artifact-id ki
-                         :version "0.0.3"}}}}
+                         :version "0.0.4"}}}}
