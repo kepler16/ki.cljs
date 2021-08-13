@@ -3,3 +3,6 @@
 /target/
 /.lsp/
 /.clj-kondo/
+/node_modules/
+/js-compiled/
+/.log/

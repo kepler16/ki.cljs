@@ -42,7 +42,3 @@
                 [:span {:css [(if active "text-white" "text-indigo-600")
                               "absolute inset-y-0 left-0 flex items-center pl-1.5"]}
                  [:> heroicons/CheckIcon {:class "h-5 w-5" :aria-hidden "true"}]])])])]]])])
-
-
-(let [{:strs [a]} #js {:a 2}]
-  a)

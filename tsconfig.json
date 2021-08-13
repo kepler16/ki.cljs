@@ -1,0 +1,20 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"suppressExcessPropertyErrors": true,
+		"declaration": false,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata":  true,
+		"target": "es6",
+		"moduleResolution": "node",
+		"outDir": "js-compiled",
+		"skipLibCheck": true,
+		"jsx": "react",
+		"lib": ["es6","dom", "es2015.promise"],
+		"baseUrl": "./",
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"./src"
+	]
+}
