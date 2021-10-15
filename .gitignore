@@ -4,5 +4,5 @@
 /.lsp/
 /.clj-kondo/
 /node_modules/
-/js-compiled/
+# /js-compiled/
 /.log/
