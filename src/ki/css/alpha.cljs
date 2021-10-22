@@ -34,10 +34,15 @@
     (do
       (uix/add-transform-fn
        (fn [attrs]
-         (if-not (contains? attrs :css)
+         (if-not (:css attrs)
            attrs
-           (let [class (str (:class attrs) " " (css (:css attrs)))]
+           (if (fn? (:css attrs))
              (-> attrs
-                 (dissoc :css)
-                 (assoc :class class))))))
+                   (dissoc :css)
+                   (assoc :class (fn [options]
+                                       ((:css attrs) (js->clj options)))))
+             (let [class (str (:class attrs) " " (css (:css attrs)))]
+               (-> attrs
+                   (dissoc :css)
+                   (assoc :class class)))))))
       0)))
