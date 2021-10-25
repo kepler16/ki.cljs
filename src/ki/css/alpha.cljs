@@ -12,7 +12,10 @@
        (remove #{""})))
 
 (defn css [css-val]
-  (str/join " " (css->classes css-val)))
+  (if (fn? css-val)
+    (fn [options]
+      (css-val (js->clj options)))
+    (str/join " " (css->classes css-val))))
 
 (comment
   (css->classes " sdf df")
@@ -29,15 +32,19 @@
 
   nil)
 
+(defn transform-attrs [attrs]
+  (if-not (:css attrs)
+    attrs
+    (let [class (css (:css attrs))
+          class-merged (if (string? class)
+                         (str (:class attrs) " " class)
+                         class)]
+      (-> attrs
+          (dissoc :css)
+          (assoc :class class-merged)))))
+
 (defn inject-uix-css-transform! []
   (defonce _init-css-attr-transform
     (do
-      (uix/add-transform-fn
-       (fn [attrs]
-         (if-not (:css attrs)
-           attrs
-           (let [class (str (:class attrs) " " (css (:css attrs)))]
-               (-> attrs
-                   (dissoc :css)
-                   (assoc :class class))))))
+      (uix/add-transform-fn transform-attrs)
       0)))
