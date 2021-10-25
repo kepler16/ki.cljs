@@ -36,13 +36,8 @@
        (fn [attrs]
          (if-not (:css attrs)
            attrs
-           (if (fn? (:css attrs))
-             (-> attrs
-                   (dissoc :css)
-                   (assoc :class (fn [options]
-                                       ((:css attrs) (js->clj options)))))
-             (let [class (str (:class attrs) " " (css (:css attrs)))]
+           (let [class (str (:class attrs) " " (css (:css attrs)))]
                (-> attrs
                    (dissoc :css)
-                   (assoc :class class)))))))
+                   (assoc :class class))))))
       0)))
