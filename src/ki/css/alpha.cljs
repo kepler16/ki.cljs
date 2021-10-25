@@ -1,6 +1,7 @@
 (ns ki.css.alpha
   (:require [uix.core.alpha :as uix]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [cljs-bean.core :as b]))
 
 (defn css->classes [css-val]
   (->> (cond
@@ -14,7 +15,7 @@
 (defn css [css-val]
   (if (fn? css-val)
     (fn [options]
-      (css-val (js->clj options)))
+      (css-val (b/->clj options)))
     (str/join " " (css->classes css-val))))
 
 (comment

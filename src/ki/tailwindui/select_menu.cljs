@@ -33,8 +33,7 @@
                                            "text-gray-900")
                                          "cursor-default select-none relative py-2 pl-8 pr-4"]))
                                 :value option}
-             (fn [{:keys [selected active] :as opts}]
-               (prn opts)
+             (fn [{:keys [selected active]}]
                [:<>
                 [:span
                  {:css [(if selected "font-semibold" "font-normal")

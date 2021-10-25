@@ -4,12 +4,6 @@
             [uix.core.alpha :as uix]
             [cljs-bean.core :as b]))
 
-(defn transform-attrs [attrs]
-  (cond-> attrs
-    (fn? (:css attrs)) (-> (assoc :class-name (fn [options]
-                                                ((:css attrs) (b/->clj options))))
-                           (dissoc :css))))
-
 (defn from-react [component]
   (fn [props & args]
     (into
