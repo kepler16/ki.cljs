@@ -1,6 +1,7 @@
 (ns ki.css.alpha
   (:require [uix.core.alpha :as uix]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [cljs-bean.core :as b]))
 
 (defn css->classes [css-val]
   (->> (cond
@@ -12,7 +13,10 @@
        (remove #{""})))
 
 (defn css [css-val]
-  (str/join " " (css->classes css-val)))
+  (if (fn? css-val)
+    (fn [options]
+      (css-val (b/->clj options)))
+    (str/join " " (css->classes css-val))))
 
 (comment
   (css->classes " sdf df")
@@ -29,15 +33,19 @@
 
   nil)
 
+(defn transform-attrs [attrs]
+  (if-not (:css attrs)
+    attrs
+    (let [class (css (:css attrs))
+          class-merged (if (string? class)
+                         (str (:class attrs) " " class)
+                         class)]
+      (-> attrs
+          (dissoc :css)
+          (assoc :class class-merged)))))
+
 (defn inject-uix-css-transform! []
   (defonce _init-css-attr-transform
     (do
-      (uix/add-transform-fn
-       (fn [attrs]
-         (if-not (:css attrs)
-           attrs
-           (let [class (str (:class attrs) " " (css (:css attrs)))]
-               (-> attrs
-                   (dissoc :css)
-                   (assoc :class class))))))
+      (uix/add-transform-fn transform-attrs)
       0)))
