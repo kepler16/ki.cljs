@@ -45,7 +45,4 @@
           (assoc :class class-merged)))))
 
 (defn inject-uix-css-transform! []
-  (defonce _init-css-attr-transform
-    (do
-      (uix/add-transform-fn transform-attrs)
-      0)))
+  (uix/add-transform-fn transform-attrs))
