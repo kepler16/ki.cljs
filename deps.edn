@@ -8,18 +8,4 @@
 
  :aliases
  {:build {:deps {io.github.seancorfield/build-clj {:git/tag "v0.6.3" :git/sha "9b8e09b"}}
-          :ns-default build}
-
-  :publish! {:jvm-opts ["--illegal-access=deny"]
-             :extra-deps {kepler16/deploy {:mvn/version "0.1.0"}}
-             :replace-deps {uix/uix.core {:local/root "uix/core"}
-                            uix/uix.dom {:local/root "uix/dom"}}
-             :exec-fn kepler16.deploy/build-and-deploy!
-             :exec-args {:jar "target/lib.jar"
-                         :target :clojars
-                         :jar-type :thin
-                         :sync-pom true
-                         :verbose true
-                         :group-id kepler16
-                         :artifact-id ki
-                         :version "0.0.8"}}}}
+          :ns-default build}}}
