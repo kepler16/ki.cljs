@@ -14,11 +14,13 @@ jobs:
     steps:
       - name: Checkout git repo
         uses: actions/checkout@v2
+        with:
+          submodules: "true"
 
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: "16"
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -29,8 +31,8 @@ jobs:
 
       - uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       - uses: s4u/maven-settings-action@v2.4.1
         with:
