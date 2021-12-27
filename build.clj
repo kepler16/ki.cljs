@@ -4,6 +4,7 @@
 
 (def global-opts
   {:repository "github-kepler"
+   :transitive true
    :lib 'kepler16/ki.cljs})
 
 (defn release-prepare [opts]
