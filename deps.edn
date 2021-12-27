@@ -1,17 +1,16 @@
-{:paths ["src" "resources"]
+{:mvn/repos {"github-kepler" {:url "https://maven.pkg.github.com/kepler16/ki.cljs"}}
+ :paths ["src" "resources"]
  :deps
  {cljs-bean/cljs-bean {:mvn/version "1.6.0"}
-  ;; UIX Deps
   rum/rum {:mvn/version "0.12.6"}
-  uix/uix.core {:git/url "https://github.com/roman01la/uix.git"
-                :deps/root "core"
-                :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}
-  uix/uix.dom {:git/url "https://github.com/roman01la/uix.git"
-               :deps/root "dom"
-               :sha "0da33eef38a7122be226b9b9a8ae0b5431b6b5d3"}}
+  uix/uix.core {:local/root "uix/core"}
+  uix/uix.dom {:local/root "uix/dom"}}
 
  :aliases
- {:publish! {:jvm-opts ["--illegal-access=deny"]
+ {:build {:deps {io.github.seancorfield/build-clj {:git/tag "v0.6.3" :git/sha "9b8e09b"}}
+          :ns-default build}
+
+  :publish! {:jvm-opts ["--illegal-access=deny"]
              :extra-deps {kepler16/deploy {:mvn/version "0.1.0"}}
              :replace-deps {uix/uix.core {:local/root "uix/core"}
                             uix/uix.dom {:local/root "uix/dom"}}
