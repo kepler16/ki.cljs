@@ -13,7 +13,7 @@
     [hui/Listbox {:value selected-option :on-change set-selected-option!}
      (fn [{:keys [open]}]
        [:div {:class "mt-1 relative"}
-        [hui/ListboxButton {:css "relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"}
+        [hui/ListboxButton {:css "relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-50"}
          [:span {:className "block truncate"} (get selected-option text-selector)]
          [:span {:className "absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"}
           [:> heroicons/SelectorIcon {:aria-hidden "true", :className "h-5 w-5 text-gray-400"}]]]
